@@ -1,0 +1,12 @@
+In /etc/suricata/suricata.yaml make sure these two settings are correct:
+
+HOME_NET: "[172.16.197.0/24]"      # your lab subnet (the network both machines are on)
+
+rule-files:
+  - local.rules                     # so Suricata loads our custom rule
+
+Then copy our rule into Suricata's rules folder:
+  sudo cp local.rules /etc/suricata/rules/local.rules
+
+Test the config:
+  sudo suricata -T -c /etc/suricata/suricata.yaml -v
